@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rohit Tomar – Web Developer</title>
+<meta name="description" content="Portfolio of Rohit Tomar, a MERN stack web developer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F6FA; --surface:#FFFFFF; --ink:#1B2A41; --muted:#4D5F7A; --line:#D3DDEB;
+  --accent:#2F5BEA; --accent-ink:#FFFFFF; --mark:#F2B84B;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1726; --surface:#16213A; --ink:#E8EEF8; --muted:#9FB0CB; --line:#27375A;
+    --accent:#7C9BFF; --accent-ink:#0F1726; --mark:#F2B84B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1726; --surface:#16213A; --ink:#E8EEF8; --muted:#9FB0CB; --line:#27375A;
+  --accent:#7C9BFF; --accent-ink:#0F1726; --mark:#F2B84B; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+nav{display:flex;gap:1.5rem;flex-wrap:wrap;padding:1.25rem 0;font-weight:500}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.hero{padding:4rem 0 5rem}
+.hero h1{font-size:clamp(3rem,10vw,6.5rem);font-weight:800;letter-spacing:-.03em}
+.hero h1 span{display:block;background:linear-gradient(transparent 62%,var(--mark) 62% 90%,transparent 90%);width:fit-content}
+.hero p.lead{max-width:38rem;font-size:1.25rem;color:var(--muted);margin:1.75rem 0 2rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.75rem 1.25rem;border-radius:.5rem;font-weight:500;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--ink);border-color:var(--line)}
+.btn:hover{border-color:var(--ink)}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+section>.wrap{display:grid;grid-template-columns:12rem 1fr;gap:2rem}
+section h2{font-size:1.75rem;font-weight:700}
+@media(max-width:44rem){section>.wrap{grid-template-columns:1fr;gap:1.25rem}}
+.job h3,.proj h3{font-size:1.35rem;font-weight:700}
+.meta{color:var(--muted);margin:.25rem 0 1rem}
+ul{padding-left:1.1rem;margin:0}
+li{margin:.4rem 0;max-width:42rem}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;margin-bottom:1.25rem}
+.proj .tags,.skills dd{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 0;padding:0;list-style:none}
+.tag{font-size:.9rem;padding:.2rem .65rem;border-radius:99px;background:var(--paper);border:1px solid var(--line)}
+.skills{margin:0}
+.skills dt{font-weight:500;margin-top:1.25rem}
+.skills dt:first-child{margin-top:0}
+.skills dd{margin:.5rem 0 0}
+.edu{list-style:none;padding:0}
+.edu li{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.9rem 0;border-bottom:1px solid var(--line);max-width:none;margin:0}
+.edu .yr{color:var(--muted)}
+h3.sub{font-size:1.2rem;margin:2rem 0 .5rem}
+.contact a.big{font:700 clamp(1.4rem,4vw,2.25rem)/1.2 "Bricolage Grotesque",system-ui,sans-serif;word-break:break-all}
+footer{padding:2rem 0 3rem;color:var(--muted);border-top:1px solid var(--line);font-size:.95rem}
+.progress{position:fixed;top:0;left:0;height:4px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:20}
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;z-index:0;pointer-events:none}
+.hero::before{width:26rem;height:26rem;background:var(--accent);top:-8rem;right:-6rem;animation:drift 14s ease-in-out infinite alternate}
+.hero::after{width:20rem;height:20rem;background:var(--mark);bottom:-8rem;left:30%;animation:drift 18s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(-4rem,3rem) scale(1.15)}}
+.hero h1 .w{display:inline-block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 span .w{animation-delay:.15s}
+@keyframes rise{from{opacity:0;transform:translateY(60%) rotate(3deg)}to{opacity:1;transform:none}}
+.hero h1 span{background-repeat:no-repeat;background-size:0 100%;animation:sweep .8s .8s ease-out forwards}
+@keyframes sweep{to{background-size:100% 100%}}
+.role{font:500 1.35rem/1.4 "IBM Plex Sans",system-ui,sans-serif;color:var(--accent);margin:1.5rem 0 0;min-height:1.9em}
+.role::after{content:"";display:inline-block;width:2px;height:1.1em;background:currentColor;margin-left:3px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p.lead{margin-top:.5rem}
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.proj{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.proj:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 14px 30px -14px var(--accent)}
+.tag{transition:background .2s,color .2s,transform .2s}
+.tag:hover{background:var(--accent);color:var(--accent-ink);transform:translateY(-2px)}
+.btn{transition:transform .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.cf{display:grid;gap:1rem;max-width:34rem;margin-top:2rem}
+.cf label{display:grid;gap:.35rem;font-weight:500}
+.cf input,.cf textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:.5rem;padding:.7rem .85rem;width:100%}
+.cf textarea{min-height:8rem;resize:vertical}
+.cf .hp{position:absolute;left:-9999px;width:1px}
+.cf button{cursor:pointer;font:inherit;font-weight:500;justify-self:start}
+.cf-status{min-height:1.5em;color:var(--muted);margin:0}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}.hero h1 span{background-size:100% 100%}.progress{display:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="bar" aria-hidden="true"></div>
+<header class="wrap">
+  <nav aria-label="Main">
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <h1><b class="w">Rohit</b><span><b class="w">Tomar</b></span></h1>
+  <p class="role" id="role">MERN stack developer</p>
+  <p class="lead">I’m a web developer who builds full-stack applications with MongoDB, Express, React and Node. I enjoy designing APIs and databases, and shipping things that work.</p>
+  <div class="btns">
+    <a class="btn primary" href="mailto:rohittthakur00@gmail.com">Email me</a>
+    <a class="btn ghost" href="https://github.com/AsyncRohit" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/rohit-tomar-b99347274/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="resume.pdf" download="Rohit_Tomar_Resume.pdf">Resume</a>
+  </div>
+</div></div>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <div class="job">
+    <h3>Web Developer Intern, Caliber Export</h3>
+    <p class="meta">Moradabad, UP · Jun 2024 – Aug 2024</p>
+    <ul>
+      <li>Developed and maintained backend features for the company’s web application using Node.js, Express.js and MongoDB.</li>
+      <li>Built and integrated RESTful APIs that carry data between the front end and back end.</li>
+      <li>Designed and managed MongoDB schemas for application data storage and retrieval.</li>
+      <li>Worked with the HR2 department team to deliver web development tasks on deadline.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Projects</h2>
+  <div>
+    <article class="proj">
+      <h3>Event Management System</h3>
+      <ul>
+        <li>A full-stack event management application built on the MERN stack.</li>
+        <li>Users sign in with JWT authentication, backed by a MongoDB schema I designed.</li>
+      </ul>
+      <ul class="tags"><li class="tag">MongoDB</li><li class="tag">Express.js</li><li class="tag">React.js</li><li class="tag">Node.js</li><li class="tag">JWT</li></ul>
+    </article>
+    <article class="proj">
+      <h3>Music Recommendation System</h3>
+      <ul>
+        <li>A music discovery platform with recommendation logic and search.</li>
+        <li>Built with Node.js, Express.js, MongoDB and JavaScript.</li>
+      </ul>
+      <ul class="tags"><li class="tag">Node.js</li><li class="tag">Express.js</li><li class="tag">MongoDB</li><li class="tag">JavaScript</li></ul>
+    </article>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Skills</h2>
+  <dl class="skills">
+    <dt>Languages</dt><dd><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">C</span></dd>
+    <dt>Front end</dt><dd><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">React.js</span></dd>
+    <dt>Back end</dt><dd><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">RESTful APIs</span><span class="tag">JWT authentication</span></dd>
+    <dt>Database</dt><dd><span class="tag">MongoDB (schema design, queries)</span></dd>
+    <dt>Tools</dt><dd><span class="tag">VS Code</span><span class="tag">GitHub</span><span class="tag">Cursor</span></dd>
+  </dl>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2>Education</h2>
+  <div>
+    <ul class="edu">
+      <li><span>MCA, Sagar Institute of Research and Technology, Bhopal<br><span class="yr">CGPA 7.01</span></span><span class="yr">2024 – 2026</span></li>
+      <li><span>BCA, LNCT University, Bhopal<br><span class="yr">CGPA 7.7</span></span><span class="yr">2021 – 2024</span></li>
+      <li><span>12th, Dr. Lokman Das Sr. Sec. School, Etah, UP<br><span class="yr">69.8%</span></span><span class="yr">2019 – 2020</span></li>
+    </ul>
+    <h3 class="sub">Certifications</h3>
+    <ul>
+      <li>Introduction to Web Development with HTML, CSS, JavaScript – IBM (Coursera)</li>
+      <li>Basics of Data Science using R – IBM (Coursera)</li>
+      <li>Algorithms for Searching, Sorting, and Indexing – Coursera</li>
+      <li>Back-End Development – Sheryians Coding School</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+  <h2>Contact</h2>
+  <div>
+    <p>I’m open to web developer roles. The quickest way to reach me is email.</p>
+    <p><a class="big" href="mailto:rohittthakur00@gmail.com">rohittthakur00@gmail.com</a></p>
+    <form class="cf" id="cf" novalidate>
+      <label>Your name<input name="name" autocomplete="name" required maxlength="80"></label>
+      <label>Your email<input name="email" type="email" autocomplete="email" required maxlength="120"></label>
+      <label>Message<textarea name="message" required maxlength="3000"></textarea></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn primary" type="submit">Send message</button>
+      <p class="cf-status" id="cf-status" role="status"></p>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Rohit Tomar</div></footer>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var bar=document.getElementById('bar');
+function prog(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')';}
+addEventListener('scroll',prog,{passive:true});prog();
+var els=document.querySelectorAll('section .wrap > *');
+els.forEach(function(e,i){e.classList.add('reveal');e.style.transitionDelay=(i%2)*120+'ms';});
+if(rm||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});}
+else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){var t=x.target;t.classList.add('in');io.unobserve(t);setTimeout(function(){t.classList.remove('reveal','in');t.style.transitionDelay='';},1000);}});},{threshold:.15});els.forEach(function(e){io.observe(e)});}
+var role=document.getElementById('role');
+var words=['MERN stack developer','REST API builder','MongoDB schema designer'];
+if(!rm){var wi=0,ci=0,del=false;(function tick(){var w=words[wi];ci+=del?-1:1;role.textContent=w.slice(0,ci);var d=del?35:70;if(!del&&ci===w.length){del=true;d=1400}else if(del&&ci===0){del=false;wi=(wi+1)%words.length;d=300}setTimeout(tick,d)})();}
+var f=document.getElementById('cf'),st=document.getElementById('cf-status');
+if(f){f.addEventListener('submit',function(ev){ev.preventDefault();
+var el=f.elements;var d={name:el['name'].value.trim(),email:el['email'].value.trim(),message:el['message'].value.trim(),website:el['website'].value};
+if(d.website)return;
+if(!d.name||!/^\S+@\S+\.\S+$/.test(d.email)||!d.message){st.textContent='Please fill in your name, a valid email and a message.';return;}
+function fallback(){st.textContent='Opening your email app instead.';location.href='mailto:rohittthakur00@gmail.com?subject='+encodeURIComponent('Portfolio message from '+d.name)+'&body='+encodeURIComponent(d.message+'\n\n'+d.name+' ('+d.email+')');}
+st.textContent='Sending…';
+fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw 0;st.textContent='Thanks, your message was sent.';f.reset();}).catch(fallback);
+});}
+})();
+</script>
+</body>
+</html>
